@@ -1,0 +1,22 @@
+<html ng-app="myapp">
+<head>
+    <title>Hello AngularJS</title>
+    <script src="../js/angular.js"></script>
+    <script src="../js/test.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div ng-controller="NotesController">
+
+        Add note:<br>
+        <textarea rows="2" cols="50" ng-model="text"></textarea>
+        <button ng-click="add()">Send</button>
+
+        <div ng-repeat="note in notes">
+            <p class="note">{{note.text}}
+                <button ng-click="delete(note.id)">Delete note id = {{note.id}}</button>
+                <button ng-click="toTop(note.id)">Send to top id = {{note.id}}</button></p>
+        </div>
+    </div>
+</body>
+</html>
