@@ -4,19 +4,77 @@
     <script src="../js/angular.js"></script>
     <script src="../js/test.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div ng-controller="NotesController">
 
-        Add note:<br>
-        <textarea rows="2" cols="50" ng-model="text"></textarea>
-        <button ng-click="add()">Send</button>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="navbar-brand">Notes tutorial app</div>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                    </form>
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav>
 
-        <div ng-repeat="note in notes">
-            <p class="note">{{note.text}}
-                <button ng-click="delete(note.id)">Delete note id = {{note.id}}</button>
-                <button ng-click="toTop(note.id)">Send to top id = {{note.id}}</button></p>
+        <div class="jumbotron">
+            <div class="container">
+                <h2>
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Keep your notes in order
+                </h2>
+                <p>
+                    A simple application to keep your own notes in order.
+                </p>
+            </div>
         </div>
-    </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Add your note to {{activeSection}}</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <textarea style="min-width:100%;min-height:200px" class="form-control" ng-model="text"></textarea>
+                            </div>
+                            <button ng-click="add()" class="btn btn-primary">Post note</button>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Notes</div>
+
+                        <ul class="list-group" ng-repeat="note in notes">
+                            <li class="list-group-item">
+                                {{note.text}}
+                                <button ng-click="delete(note._id)">Delete note id = {{note._id}}</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <!-- Sections -->
+                </div>
+
+            </div>
+
+        </div>
 </body>
 </html>
