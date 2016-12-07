@@ -20,6 +20,9 @@ db.open(function(){
     db.collection('notes', function(error, notes) {
         db.notes = notes;
     });
+    db.collection('sections', function(error, sections) {
+        db.sections = sections;
+    });
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
