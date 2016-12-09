@@ -7,12 +7,21 @@
             <input type="text" class="form-control" id="userName"
                    name="userName" placeholder="Username"
                    ng-model="user.userName"/>
+            <span ng-show="userForm.userName.$dirty && userForm.userName.$error.unique">
+                User name is not unique
+            </span>
+
             <input type="password" class="form-control" id="password"
                    name="password" placeholder="Password"
                    ng-model="user.pass"/>
+
             <input type="password" class="form-control" id="password2"
                    name="password2" placeholder="Repeat password"
-                   match-to=”password” ng-model=”password2”/>
+                   match-to="user.password" ng-model="user.password2"/>
+            <span ng-show="userForm.password2.$touched && userForm.password2.$error.matchTo">
+                Passwords should match
+            </span>
+
             <input type="date" class="form-control" id="birthDay"
                    name="birthDay" placeholder="Date"
                    ng-model="user.birthDay"
@@ -20,10 +29,12 @@
             <span ng-show="userForm.dateOfBirth.$error.pattern">
                 Date of birth should be in format dd.mm.yyyy
             </span>
+
             <input type="email" class="form-control" id="email"
                    name="email" placeholder="E-mail"
                    ng-model="user.email"
                    ng-show="user.subscribe"/>
+
             <div class="checkbox">
                 <label><input type="checkbox"
                               ng-model="user.subscribe">
